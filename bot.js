@@ -68,6 +68,17 @@ var controller = Botkit.slackbot({
     studio_token: process.env.studio_token
 });
 
+// Dashbot is a turnkey analytics platform for bots.
+// Sign up for a free key here: https://www.dashbot.io/ to see your bot analytics in real time.
+if (process.env.DASHBOT_API_KEY) {
+  var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).slack;
+  controller.middleware.receive.use(dashbot.receive);
+  controller.middleware.send.use(dashbot.send);    
+  controller.log.info('Thanks for using Dashbot. Visit https://www.dashbot.io/ to see your bot analytics in real time.');
+} else {
+  controller.log.info('No DASHBOT_API_KEY specified. For free turnkey analytics for your bot, go to https://www.dashbot.io/ to get your key.');
+}
+
 // Spawn a single instance of the bot to connect to your Slack team
 // You can extend this bot later to connect to multiple teams.
 // Refer to the Botkit docs on Github
