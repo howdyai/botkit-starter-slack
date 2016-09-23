@@ -55,12 +55,12 @@ if (!process.env.token) {
     usage_tip();
     process.exit(1);
 }
-
-if (!process.env.studio_token) {
-    console.log('Error: Specify a Botkit Studio token in environment.');
-    usage_tip();
-    process.exit(1);
-}
+//
+// if (!process.env.studio_token) {
+//     console.log('Error: Specify a Botkit Studio token in environment.');
+//     usage_tip();
+//     process.exit(1);
+// }
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.slackbot({
@@ -88,12 +88,17 @@ require("fs").readdirSync(normalizedPath).forEach(function(file) {
 // If a trigger is matched, the conversation will automatically fire!
 // You can tie into the execution of the script using the functions
 // controller.studio.before, controller.studio.after and controller.studio.validate
-controller.on('direct_message,direct_mention,mention', function(bot, message) {
-    controller.studio.runTrigger(bot, message.text, message.user, message.channel).catch(function(err) {
-        bot.reply(message, 'I experienced an error with a request to Botkit Studio: ' + err);
+if (process.env.studio_token) {
+    controller.on('direct_message,direct_mention,mention', function(bot, message) {
+        controller.studio.runTrigger(bot, message.text, message.user, message.channel).catch(function(err) {
+            bot.reply(message, 'I experienced an error with a request to Botkit Studio: ' + err);
+        });
     });
-});
-
+} else {
+    console.log('~~~~~~~~~~');
+    console.log('NOTE: Botkit Studio functionality has not been enabled');
+    console.log('To enable, pass in a studio_token parameter with a token from https://studio.botkit.ai/');
+}
 
 function usage_tip() {
     console.log('~~~~~~~~~~');
