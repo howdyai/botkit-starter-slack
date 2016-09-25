@@ -47,7 +47,7 @@ module.exports = function(controller) {
 
     // listen for a user saying "add <something>", and then add it to the user's list
     // store the new list in the storage system
-    controller.hears(['add (.*)'],'direct_message,direct_mention_mention', function(bot, message) {
+    controller.hears(['add (.*)'],'direct_message,direct_mention,mention', function(bot, message) {
 
         var newtask = message.match[1];
         controller.storage.users.get(message.user, function(err, user) {
