@@ -124,7 +124,7 @@ module.exports = function(controller) {
         var text = '';
 
         for (var t = 0; t < user.tasks.length; t++) {
-            text = text + '> ' +  (t + 1) + ') ' +  user.tasks[t] + '\n';
+            text = text + '> `' +  (t + 1) + '`) ' +  user.tasks[t] + '\n';
         }
 
         return text;
