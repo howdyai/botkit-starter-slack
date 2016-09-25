@@ -7,7 +7,7 @@ Talkabot Workshop!
 
 Clone this repository:
 
-`git clone git@github.com:howdyai/botkit-studio-starter.git`
+`git clone https://github.com/howdyai/botkit-studio-starter.git`
 
 Install dependencies, including [Botkit](https://github.com/howdyai/botkit):
 
