@@ -4,7 +4,7 @@
   "description": "A starter kit for building a custom bot with Botkit Studio",
   "main": "bot.js",
   "dependencies": {
-    "botkit": "git@github.com:howdyai/botkit.git#talkabot",
+    "botkit": "https://github.com/howdyai/botkit.git#talkabot",
     "dashbot": "0.7.4",
     "wordfilter": "^0.2.6"
   },
