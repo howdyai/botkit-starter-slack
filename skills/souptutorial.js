@@ -42,7 +42,7 @@ module.exports = function(controller) {
   };
 
 
-    controller.studio.before('soup', function(convo, next){
+    controller.studio.before('example_soupme', function(convo, next){
       // get soup of the day
       var daily_special = getDailySpecial();
       convo.setVar('daily_special', daily_special);
@@ -55,7 +55,7 @@ module.exports = function(controller) {
       next();
     });
 
-    controller.studio.validate('soup','selected_soup', function(convo, next) {
+    controller.studio.validate('example_soupme','selected_soup', function(convo, next) {
       var found_soup = [], possible_matches = [], soup_selection, input = convo.extractResponse('selected_soup');
       possible_matches.push(convo.vars.daily_special.name);
       convo.vars.soup_menu.forEach(function(m){
@@ -86,7 +86,7 @@ module.exports = function(controller) {
       next();
     });
 
-    controller.studio.validate('soup','soup_size', function(convo, next) {
+    controller.studio.validate('example_soupme','soup_size', function(convo, next) {
       var selected_soup_size, valid_sizes = ['small', 'medium', 'epic'], input = convo.extractResponse('soup_size');
       console.log('soup_size: ', input);
       var filtered_input = valid_sizes.filter(function(s){
@@ -107,7 +107,7 @@ module.exports = function(controller) {
 
 
 
-    controller.studio.after('soup', function(convo, next) {
+    controller.studio.after('example_soupme', function(convo, next) {
       if (convo.status == 'completed' && convo.vars.soup_selection && convo.vars.selected_soup_size) {
         console.log('--------------------------- soup order finished ----------------------------------');
         console.log('Generated a soup order for', convo.context.user, ' who ordered a', convo.vars.selected_soup_size, ' sized ', convo.vars.soup_selection.name, ' with a confirmation number of ', convo.vars.order_confirmation);
