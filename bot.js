@@ -65,6 +65,7 @@ if (!process.env.token) {
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.slackbot({
     debug: false,
+    retry: 10,
     studio_token: process.env.studio_token
 });
 
@@ -73,7 +74,7 @@ var controller = Botkit.slackbot({
 if (process.env.DASHBOT_API_KEY) {
   var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).slack;
   controller.middleware.receive.use(dashbot.receive);
-  controller.middleware.send.use(dashbot.send);    
+  controller.middleware.send.use(dashbot.send);
   controller.log.info('Thanks for using Dashbot. Visit https://www.dashbot.io/ to see your bot analytics in real time.');
 } else {
   controller.log.info('No DASHBOT_API_KEY specified. For free turnkey analytics for your bot, go to https://www.dashbot.io/ to get your key.');

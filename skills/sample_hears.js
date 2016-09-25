@@ -13,6 +13,10 @@ var wordfilter = require('wordfilter');
 
 module.exports = function(controller) {
 
+    controller.hears(['howdy'], 'direct_message,direct_mention', function(bot, message) {
+        bot.reply(message, ':taco:');
+    });
+
     controller.hears(['uptime'], 'direct_message,direct_mention', function(bot, message) {
 
         bot.reply(message, 'I have been up for ' + formatUptime(process.uptime()));

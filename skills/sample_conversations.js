@@ -2,59 +2,73 @@
 
 WHAT IS THIS?
 
-This module demonstrates simple uses of Botkit's `hears` handler functions.
+This module demonstrates simple uses of Botkit's conversation system.
 
-In these examples, Botkit is configured to listen for certain phrases, and then
-respond immediately with a single line response.
+In this example, Botkit hears a keyword, then asks a question. Different paths
+through the conversation are chosen based on the user's response.
 
 */
 
 module.exports = function(controller) {
 
-    controller.hears(['cheese'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['question'], 'direct_message,direct_mention', function(bot, message) {
 
         bot.createConversation(message, function(err, convo) {
 
             // create a path for when a user says YES
             convo.addMessage({
-                    text: 'You said yes! How wonderful.',
+                    text: 'How wonderful.',
             },'yes_thread');
 
             // create a path for when a user says NO
+            // mark the conversation as unsuccessful at the end
             convo.addMessage({
-                text: 'You said no, that is too bad.',
+                text: 'Cheese! It is not for everyone.',
+                action: 'stop', // this marks the converation as unsuccessful
             },'no_thread');
 
             // create a path where neither option was matched
             // this message has an action field, which directs botkit to go back to the `default` thread after sending this message.
             convo.addMessage({
-                text: 'Sorry I did not understand.',
+                text: 'Sorry I did not understand. Say `yes` or `no`',
                 action: 'default',
             },'bad_response');
 
             // Create a yes/no question in the default thread...
             convo.ask('Do you like cheese?', [
                 {
-                    pattern: 'yes',
+                    pattern:  bot.utterances.yes,
                     callback: function(response, convo) {
-                        convo.changeTopic('yes_thread');
+                        convo.gotoThread('yes_thread');
                     },
                 },
                 {
-                    pattern: 'no',
+                    pattern:  bot.utterances.no,
                     callback: function(response, convo) {
-                        convo.changeTopic('no_thread');
+                        convo.gotoThread('no_thread');
                     },
                 },
                 {
                     default: true,
                     callback: function(response, convo) {
-                        convo.changeTopic('bad_response');
+                        convo.gotoThread('bad_response');
                     },
                 }
             ]);
 
             convo.activate();
+
+            // capture the results of the conversation and see what happened...
+            convo.on('end', function(convo) {
+
+                if (convo.successful()) {
+                    // this still works to send individual replies...
+                    bot.reply(message, 'Let us eat some!');
+
+                    // and now deliver cheese via tcp/ip...
+                }
+
+            });
         });
 
     });
