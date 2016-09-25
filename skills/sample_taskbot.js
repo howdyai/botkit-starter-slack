@@ -37,11 +37,7 @@ module.exports = function(controller) {
                     generateTaskList(user) +
                     'Reply with `done _number_` to mark a task completed.';
 
-                var response = {
-                    text: text,
-                }
-
-                bot.reply(message, response);
+                bot.reply(message, text);
 
             }
 
@@ -125,7 +121,7 @@ module.exports = function(controller) {
     // it can be used in various places
     function generateTaskList(user) {
 
-        text = '';
+        var text = '';
 
         for (var t = 0; t < user.tasks.length; t++) {
             text = text + '> ' +  (t + 1) + ') ' +  user.tasks[t] + '\n';
