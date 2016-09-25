@@ -101,7 +101,6 @@ module.exports = function(controller) {
                     user.tasks = [];
                 }
 
-                console.log(number, user.tasks.length);
                 if (number < 0 || number >= user.tasks.length) {
                     bot.reply(message, 'Sorry, your input is out of range. Right now there are ' + user.tasks.length + ' items on your list.');
                 } else {
