@@ -4,7 +4,7 @@
   "description": "A starter kit for building a custom bot with Botkit Studio",
   "main": "bot.js",
   "dependencies": {
-    "botkit": "^0.2.2",
+    "botkit": "^0.4",
     "dashbot": "0.7.4",
     "wordfilter": "^0.2.6"
   },
