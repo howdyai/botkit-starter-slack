@@ -16,19 +16,21 @@ Clone this repository:
 Install dependencies, including [Botkit](https://github.com/howdyai/botkit):
 
 ```
-cd botkit-studio-starter
+cd botkit-studio-starter-slackapp
 npm install
 ```
 
-Get a Slack bot token [from your Slack team](https://my.slack.com/apps/new/A0F7YS25R-bots)
+Get a Slack bot token [from your Slack team](https://api.slack.com)
 
 Get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/)
 
 Run your bot from the command line with your new tokens:
 
-`token=<slack token> studio_token=<botkit studio token> node .`
+`clientId=<MY SLACK TOKEN> clientSecret=<my client secret> port=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js`
 
-Your bot should connect to Slack AND Botkit Studio and leap into action!
+Now, visit your new botkit app's login page: http://localhost:3000/login
+
+Once successfully logged in, your bot should connect to Slack AND Botkit Studio and leap into action!
 
 Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/talkabot/readme-studio.md)
 

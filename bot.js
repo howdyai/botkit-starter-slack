@@ -19,9 +19,9 @@ This bot demonstrates many of the core features of Botkit:
 
 # RUN THE BOT:
 
-  Get a Bot token from Slack:
+  Create a new app via the Slack Developer site:
 
-    -> http://my.slack.com/services/new/bot
+    -> http://api.slack.com
 
   Get a Botkit Studio token from Botkit.ai:
 
@@ -29,15 +29,18 @@ This bot demonstrates many of the core features of Botkit:
 
   Run your bot from the command line:
 
-    token=<MY SLACK TOKEN> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js
+    clientId=<MY SLACK TOKEN> clientSecret=<my client secret> port=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js
 
 # USE THE BOT:
 
-  Find your bot inside Slack to send it a direct message.
+    Navigate to the built-in login page:
 
-  Say: "Hello"
+    https://<myhost.com>/login
 
-  Make sure to invite your bot into other channels using /invite @<my bot>!
+    This will authenticate you with Slack.
+
+    If successful, your bot will come online and greet you.
+
 
 # EXTEND THE BOT:
 
@@ -50,22 +53,27 @@ This bot demonstrates many of the core features of Botkit:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 var Botkit = require('botkit');
 
-if (!process.env.token) {
-    console.log('Error: Specify a Slack bot token in environment.');
-    usage_tip();
-    process.exit(1);
+
+if (!process.env.clientId || !process.env.clientSecret || !process.env.port) {
+  console.log('Error: Specify clientId clientSecret and port in environment');
+  usage_tip();
+  process.exit(1);
 }
-//
+
 // if (!process.env.studio_token) {
-//     console.log('Error: Specify a Botkit Studio token in environment.');
-//     usage_tip();
-//     process.exit(1);
+//      console.log('Error: Specify a Botkit Studio token in environment.');
+//      usage_tip();
+//      process.exit(1);
 // }
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.slackbot({
+    clientId: process.env.clientId,
+    clientSecret: process.env.clientSecret,
     debug: false,
     retry: 10,
+    rtm_receive_messages: false,
+    scopes: ['bot'],
     studio_token: process.env.studio_token
 });
 
@@ -80,12 +88,17 @@ if (process.env.DASHBOT_API_KEY) {
   controller.log.info('No DASHBOT_API_KEY specified. For free turnkey analytics for your bot, go to https://www.dashbot.io/ to get your key.');
 }
 
-// Spawn a single instance of the bot to connect to your Slack team
-// You can extend this bot later to connect to multiple teams.
-// Refer to the Botkit docs on Github
-var bot = controller.spawn({
-    token: process.env.token,
-}).startRTM();
+
+controller.setupWebserver(process.env.port,function(err,webserver) {
+  controller.createWebhookEndpoints(controller.webserver);
+  controller.createOauthEndpoints(controller.webserver,function(err,req,res) {
+    if (err) {
+      res.status(500).send('ERROR: ' + err);
+    } else {
+      res.send('Success!');
+    }
+  });
+});
 
 
 var normalizedPath = require("path").join(__dirname, "skills");
@@ -112,12 +125,15 @@ if (process.env.studio_token) {
     console.log('To enable, pass in a studio_token parameter with a token from https://studio.botkit.ai/');
 }
 
+
+
+
 function usage_tip() {
     console.log('~~~~~~~~~~');
     console.log('Botkit Studio Starter Kit');
     console.log('Execute your bot application like this:');
-    console.log('token=<MY SLACK TOKEN> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js');
-    console.log('Get a Slack token here: https://my.slack.com/apps/new/A0F7YS25R-bots')
+    console.log('clientId=<MY SLACK CLIENT ID> clientSecret=<MY CLIENT SECRET> port=3000 studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js');
+    console.log('Get Slack app credentials here: https://api.slack.com/apps')
     console.log('Get a Botkit Studio token here: https://studio.botkit.ai/')
     console.log('~~~~~~~~~~');
 }
