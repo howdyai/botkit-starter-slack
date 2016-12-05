@@ -11,7 +11,7 @@ that created and maintains the open source Botkit library, [Howdy.](https://howd
 
 Clone this repository:
 
-`git clone https://github.com/howdyai/botkit-studio-starter.git`
+`git clone https://github.com/howdyai/botkit-studio-starter-slackapp.git`
 
 Install dependencies, including [Botkit](https://github.com/howdyai/botkit):
 
