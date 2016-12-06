@@ -54,7 +54,7 @@ This bot demonstrates many of the core features of Botkit:
 var Botkit = require('botkit');
 var express = require('express');
 
-if (!process.env.clientId || !process.env.clientSecret || !process.env.port) {
+if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
   console.log('Error: Specify clientId clientSecret and port in environment');
   usage_tip();
   process.exit(1);
@@ -90,7 +90,7 @@ if (process.env.DASHBOT_API_KEY) {
 }
 
 
-controller.setupWebserver(process.env.port,function(err,webserver) {
+controller.setupWebserver(process.env.PORT,function(err,webserver) {
 
   controller.webserver.use(express.static('public'));
 
