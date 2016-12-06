@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A starter kit for building a custom bot with Botkit Studio",
   "main": "bot.js",
+  "scripts": {
+      "start": "node bot.js"
+  },
   "dependencies": {
     "botkit": "^0.4",
     "dashbot": "0.7.4",
@@ -10,7 +13,6 @@
     "wordfilter": "^0.2.6"
   },
   "devDependencies": {},
-  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/howdyai/botkit-studio-starter.git"
