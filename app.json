@@ -1,0 +1,6 @@
+{
+  "name": "Slack App Starter Kit from Botkit Studio",
+  "description": "A starting poing for building custom Slack applications",
+  "repository": "https://github.com/howdyai/botkit-studio-starter-slackapp",
+  "keywords": ["node", "bots", "slack","botkit"]
+}

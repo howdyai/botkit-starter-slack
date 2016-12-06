@@ -74,7 +74,8 @@ var controller = Botkit.slackbot({
     retry: 10,
     rtm_receive_messages: false,
     scopes: ['bot'],
-    studio_token: process.env.studio_token
+    studio_token: process.env.studio_token,
+    
 });
 
 // Dashbot is a turnkey analytics platform for bots.
