@@ -51,20 +51,14 @@ This bot demonstrates many of the core features of Botkit:
     -> http://howdy.ai/botkit
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-var Botkit = require('botkit');
-var express = require('express');
-
 if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
   console.log('Error: Specify clientId clientSecret and port in environment');
   usage_tip();
   process.exit(1);
 }
 
-// if (!process.env.studio_token) {
-//      console.log('Error: Specify a Botkit Studio token in environment.');
-//      usage_tip();
-//      process.exit(1);
-// }
+var Botkit = require('botkit');
+
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.slackbot({
@@ -75,8 +69,17 @@ var controller = Botkit.slackbot({
     rtm_receive_messages: false,
     scopes: ['bot'],
     studio_token: process.env.studio_token,
-    
+
 });
+
+
+// Set up an Express-powered webserver to expose oauth and webhook endpoints
+var webserver = require(__dirname + '/components/express_webserver.js')(controller);
+
+// Set up a simple storage backend for keeping a record of customers
+// who sign up for the app via the oauth
+require(__dirname + '/components/user_storage.js')(controller);
+
 
 // Dashbot is a turnkey analytics platform for bots.
 // Sign up for a free key here: https://www.dashbot.io/ to see your bot analytics in real time.
@@ -90,20 +93,15 @@ if (process.env.DASHBOT_API_KEY) {
 }
 
 
-controller.setupWebserver(process.env.PORT,function(err,webserver) {
-
-  controller.webserver.use(express.static('public'));
-
-  controller.createWebhookEndpoints(controller.webserver);
-  controller.createOauthEndpoints(controller.webserver,function(err,req,res) {
-    if (err) {
-      res.status(500).send('ERROR: ' + err);
-    } else {
-      res.send('Success!');
-    }
-  });
-});
-
+  // controller.createWebhookEndpoints(webserver);
+  // controller.createOauthEndpoints(webserver,function(err,req,res) {
+  //   if (err) {
+  //     res.status(500).send('ERROR: ' + err);
+  //   } else {
+  //     res.send('Success!');
+  //   }
+  // });
+  //
 
 var normalizedPath = require("path").join(__dirname, "skills");
 require("fs").readdirSync(normalizedPath).forEach(function(file) {
