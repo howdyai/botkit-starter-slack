@@ -58,18 +58,18 @@ if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
 }
 
 var Botkit = require('botkit');
-
+var debug = require('debug')('botkit:main');
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.slackbot({
     clientId: process.env.clientId,
     clientSecret: process.env.clientSecret,
-    debug: false,
-    retry: 10,
+    // debug: true,
     rtm_receive_messages: false,
     scopes: ['bot'],
     studio_token: process.env.studio_token,
 
+    json_file_store: __dirname + '/.db/' // store user data in a simple JSON format
 });
 
 
@@ -78,35 +78,27 @@ var webserver = require(__dirname + '/components/express_webserver.js')(controll
 
 // Set up a simple storage backend for keeping a record of customers
 // who sign up for the app via the oauth
-require(__dirname + '/components/user_storage.js')(controller);
+require(__dirname + '/components/user_registration.js')(controller);
 
+// Send an onboarding message when a new team joins
+require(__dirname + '/components/onboarding.js')(controller);
 
-// Dashbot is a turnkey analytics platform for bots.
-// Sign up for a free key here: https://www.dashbot.io/ to see your bot analytics in real time.
-if (process.env.DASHBOT_API_KEY) {
-  var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).slack;
-  controller.middleware.receive.use(dashbot.receive);
-  controller.middleware.send.use(dashbot.send);
-  controller.log.info('Thanks for using Dashbot. Visit https://www.dashbot.io/ to see your bot analytics in real time.');
-} else {
-  controller.log.info('No DASHBOT_API_KEY specified. For free turnkey analytics for your bot, go to https://www.dashbot.io/ to get your key.');
-}
+// Set up a system to manage connections to Slack's RTM api
+// This will eventually be removed when Slack fixes support for bot presence
+var rtm_manager = require(__dirname + '/components/rtm_manager.js')(controller);
 
+// Reconnect all pre-registered bots
+rtm_manager.reconnect();
 
-  // controller.createWebhookEndpoints(webserver);
-  // controller.createOauthEndpoints(webserver,function(err,req,res) {
-  //   if (err) {
-  //     res.status(500).send('ERROR: ' + err);
-  //   } else {
-  //     res.send('Success!');
-  //   }
-  // });
-  //
+// Enable Dashbot.io plugin
+require(__dirname + '/components/plugin_dashbot.js')(controller);
+
 
 var normalizedPath = require("path").join(__dirname, "skills");
 require("fs").readdirSync(normalizedPath).forEach(function(file) {
   require("./skills/" + file)(controller);
 });
+
 
 
 // This captures and evaluates any message sent to the bot as a DM
@@ -119,6 +111,7 @@ if (process.env.studio_token) {
     controller.on('direct_message,direct_mention,mention', function(bot, message) {
         controller.studio.runTrigger(bot, message.text, message.user, message.channel).catch(function(err) {
             bot.reply(message, 'I experienced an error with a request to Botkit Studio: ' + err);
+            debug('Botkit Studio: ', err);
         });
     });
 } else {
@@ -126,7 +119,7 @@ if (process.env.studio_token) {
     console.log('NOTE: Botkit Studio functionality has not been enabled');
     console.log('To enable, pass in a studio_token parameter with a token from https://studio.botkit.ai/');
 }
-
+s
 
 
 
