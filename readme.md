@@ -1,6 +1,6 @@
-# Botkit Studio Starter Kit
+# Botkit Starter Kit for Slack Bots
 
-This repo contains everything you need to get started building a bot with Botkit Studio!
+This repo contains everything you need to get started building a bot with Botkit and Botkit Studio!
 
 [Botkit Studio](https://studio.botkit.ai/) is a set tools that adds capabilities
 to the open source Botkit library by offering hosted GUI interfaces for script
@@ -11,12 +11,12 @@ that created and maintains the open source Botkit library, [Howdy.](https://howd
 
 Clone this repository:
 
-`git clone https://github.com/howdyai/botkit-studio-starter-slackapp.git`
+`git clone https://github.com/howdyai/botkit-starter-slack.git`
 
 Install dependencies, including [Botkit](https://github.com/howdyai/botkit):
 
 ```
-cd botkit-studio-starter-slackapp
+cd botkit-starter-slack
 npm install
 ```
 
@@ -26,13 +26,13 @@ Get a Botkit Studio token [from your Botkit developer account](https://studio.bo
 
 Run your bot from the command line with your new tokens:
 
-`clientId=<MY SLACK TOKEN> clientSecret=<my client secret> port=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js`
+`clientId=<MY SLACK TOKEN> clientSecret=<my client secret> PORT=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js`
 
 Now, visit your new botkit app's login page: http://localhost:3000/login
 
 Once successfully logged in, your bot should connect to Slack AND Botkit Studio and leap into action!
 
-Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/talkabot/readme-studio.md)
+Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/readme-studio.md)
 
 ### Extend This Bot
 
