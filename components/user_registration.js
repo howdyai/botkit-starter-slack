@@ -38,6 +38,9 @@ module.exports = function(controller) {
                     debug('Error: could not authenticate bot user', err);
                 } else {
                     team.bot.name = bot_auth.user;
+
+                    // Replace this with your own database!
+
                     controller.storage.teams.save(team, function(err, id) {
                         if (err) {
                             debug('Error: could not save team record:', err);

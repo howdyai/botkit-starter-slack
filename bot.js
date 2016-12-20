@@ -65,13 +65,12 @@ var controller = Botkit.slackbot({
     clientId: process.env.clientId,
     clientSecret: process.env.clientSecret,
     // debug: true,
-    rtm_receive_messages: false,
     scopes: ['bot'],
     studio_token: process.env.studio_token,
-
     json_file_store: __dirname + '/.db/' // store user data in a simple JSON format
 });
 
+controller.startTicking();
 
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
 var webserver = require(__dirname + '/components/express_webserver.js')(controller);
@@ -83,12 +82,13 @@ require(__dirname + '/components/user_registration.js')(controller);
 // Send an onboarding message when a new team joins
 require(__dirname + '/components/onboarding.js')(controller);
 
-// Set up a system to manage connections to Slack's RTM api
-// This will eventually be removed when Slack fixes support for bot presence
-var rtm_manager = require(__dirname + '/components/rtm_manager.js')(controller);
-
-// Reconnect all pre-registered bots
-rtm_manager.reconnect();
+// no longer necessary since slack now supports the always on event bots
+// // Set up a system to manage connections to Slack's RTM api
+// // This will eventually be removed when Slack fixes support for bot presence
+// var rtm_manager = require(__dirname + '/components/rtm_manager.js')(controller);
+//
+// // Reconnect all pre-registered bots
+// rtm_manager.reconnect();
 
 // Enable Dashbot.io plugin
 require(__dirname + '/components/plugin_dashbot.js')(controller);
