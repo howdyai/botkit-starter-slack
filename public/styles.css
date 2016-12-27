@@ -2,6 +2,8 @@ html, body {
     padding: 0;
     margin: 0;
     height: 100%;
+    font-family: 'helvetica', sans-serif;
+    font-size: 18px;
 }
 
 a {

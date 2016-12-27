@@ -51,9 +51,12 @@ module.exports = function(webserver, controller) {
                     auth.identity = identity;
                     controller.trigger('oauth:success', [auth]);
 
+                    res.cookie('team_id', auth.team_id);
+                    res.cookie('bot_user_id', auth.bot.bot_user_id);
+                    res.redirect('/login_success.html');
+
                 });
 
-                res.redirect('/login_success.html');
 
             });
         }
