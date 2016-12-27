@@ -18,8 +18,6 @@ module.exports = function(controller) {
                 type: 'message',
             };
 
-            console.log(message);
-
             var reply = trigger.original_message;
 
             for (var a = 0; a < reply.attachments.length; a++) {

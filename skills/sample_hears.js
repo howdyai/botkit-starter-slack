@@ -13,23 +13,11 @@ var wordfilter = require('wordfilter');
 
 module.exports = function(controller) {
 
-    controller.hears(['howdy'], 'direct_message,direct_mention', function(bot, message) {
-        bot.reply(message, ':taco:');
-    });
-
-    controller.hears(['uptime'], 'direct_message,direct_mention', function(bot, message) {
-
+    controller.hears(['^uptime'], 'direct_message,direct_mention', function(bot, message) {
         bot.reply(message, 'I have been up for ' + formatUptime(process.uptime()));
-
     });
 
-    controller.hears(['identify yourself'], 'ambient,mention,direct_message,direct_mention', function(bot, message) {
-
-        bot.reply(message, 'I am a robot, I cannot lie.');
-
-    });
-
-    controller.hears(['say (.*)','say'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['^say (.*)','^say'], 'direct_message,direct_mention', function(bot, message) {
         if (message.match[1]) {
 
             if (!wordfilter.blacklisted(message.match[1])) {
@@ -40,7 +28,6 @@ module.exports = function(controller) {
         } else {
             bot.reply(message, 'I will repeat whatever you say.')
         }
-
     });
 
 
