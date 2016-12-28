@@ -7,6 +7,8 @@ to the open source Botkit library by offering hosted GUI interfaces for script
 management and action trigger definition. Botkit Studio is built by the company
 that created and maintains the open source Botkit library, [Howdy.](https://howdy.ai)
 
+While Botkit Studio is *not required* to build a bot using Botkit, we highly recommend it as your bot will be easier to manage, customize and extend.
+
 ### Get Started
 
 Clone this repository:
@@ -20,15 +22,15 @@ cd botkit-starter-slack
 npm install
 ```
 
-Get a Slack bot token [from your Slack team](https://api.slack.com)
+Set up a new Slack application via the Slack developer portal. This is a multi-step process, but only takes a few minutes. [Read this step-by-step guide](https://github.com/howdyai/botkit/blob/master/docs/slack-events-api.md) to make sure everything is set up.
 
-Get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/)
+Next, get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/)
 
-Run your bot from the command line with your new tokens:
+Now, run your bot from the command line with your new tokens:
 
 `clientId=<MY SLACK TOKEN> clientSecret=<my client secret> PORT=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js`
 
-Now, visit your new botkit app's login page: http://localhost:3000/login
+Now, visit your new bot's login page: http://localhost:3000/login
 
 Once successfully logged in, your bot should connect to Slack AND Botkit Studio and leap into action!
 
