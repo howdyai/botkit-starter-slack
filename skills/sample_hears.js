@@ -13,8 +13,34 @@ var wordfilter = require('wordfilter');
 
 module.exports = function(controller) {
 
-    controller.hears(['^uptime'], 'direct_message,direct_mention', function(bot, message) {
-        bot.reply(message, 'I have been up for ' + formatUptime(process.uptime()));
+    /* Collect some very simple runtime stats for use in the uptime/debug command */
+    var stats = {
+        triggers: 0,
+        convos: 0,
+    }
+
+    controller.on('heard_trigger', function() {
+        stats.triggers++;
+    });
+
+    controller.on('conversationStarted', function() {
+        stats.convos++;
+    });
+
+
+    controller.hears(['^uptime','^debug'], 'direct_message,direct_mention', function(bot, message) {
+
+        bot.createConversation(message, function(err, convo) {
+            if (!err) {
+                convo.setVar('uptime', formatUptime(process.uptime()));
+                convo.setVar('convos', stats.convos);
+                convo.setVar('triggers', stats.triggers);
+
+                convo.say('My main process has been online for {{vars.uptime}}. Since booting, I have heard {{vars.triggers}} triggers, and conducted {{vars.convos}} conversations.');
+                convo.activate();
+            }
+        });
+
     });
 
     controller.hears(['^say (.*)','^say'], 'direct_message,direct_mention', function(bot, message) {
@@ -52,7 +78,7 @@ module.exports = function(controller) {
             unit = unit + 's';
         }
 
-        uptime = uptime + ' ' + unit;
+        uptime = parseInt(uptime) + ' ' + unit;
         return uptime;
     }
 
