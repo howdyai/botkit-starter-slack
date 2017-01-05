@@ -13,7 +13,8 @@
           "description": "Client Secret provided by Slack"
       },
       "studio_token": {
-          "description": "Token associated with your bot in Botkit Studio"
+          "description": "Token associated with your bot in Botkit Studio",
+          "required":false
       }
   }
 }
