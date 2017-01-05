@@ -1,5 +1,5 @@
 {
-  "name": "Botkit Starter Kit for Slack",
+  "name": "Botkit Starter Kit",
   "description": "A starting point for building custom Slack applications",
   "repository": "https://github.com/howdyai/botkit-starter-slack",
   "keywords": ["node", "bots", "slack","botkit"],
