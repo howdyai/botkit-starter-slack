@@ -67,6 +67,7 @@ var controller = Botkit.slackbot({
     // debug: true,
     scopes: ['bot'],
     studio_token: process.env.studio_token,
+    studio_command_uri: process.env.studio_command_uri,
     json_file_store: __dirname + '/.db/' // store user data in a simple JSON format
 });
 
