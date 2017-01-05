@@ -103,14 +103,23 @@ module.exports = function(controller) {
 
                     var item = user.tasks.splice(number,1);
 
-                    // reply with a strikethrough message...
-                    bot.reply(message, '~' + item + '~');
+                    controller.storage.users.save(user, function(err,saved) {
 
-                    if (user.tasks.length > 0) {
-                        bot.reply(message, 'Here are our remaining tasks:\n' + generateTaskList(user));
-                    } else {
-                        bot.reply(message, 'Your list is now empty!');
-                    }
+                        if (err) {
+                            bot.reply(message, 'I experienced an error adding your task: ' + err);
+                        } else {
+                          // reply with a strikethrough message...
+                          bot.reply(message, '~' + item + '~');
+
+                          if (user.tasks.length > 0) {
+                              bot.reply(message, 'Here are our remaining tasks:\n' + generateTaskList(user));
+                          } else {
+                              bot.reply(message, 'Your list is now empty!');
+                          }
+                        }
+
+                    });
+
                 }
             });
         }
