@@ -1,7 +1,7 @@
 {
-  "name": "Botkit Studio Starter Kit",
-  "description": "A starting poing for building custom Slack applications",
-  "repository": "https://github.com/howdyai/botkit-studio-starter-slackapp",
+  "name": "Botkit Starter Kit for Slack",
+  "description": "A starting point for building custom Slack applications",
+  "repository": "https://github.com/howdyai/botkit-starter-slack",
   "keywords": ["node", "bots", "slack","botkit"],
   "website": "https://studio.botkit.ai/",
   "success_url":"/",
