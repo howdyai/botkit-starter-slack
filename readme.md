@@ -9,6 +9,12 @@ that created and maintains the open source Botkit library, [Howdy.](https://howd
 
 While Botkit Studio is *not required* to build a bot using Botkit, we highly recommend it as your bot will be easier to manage, customize and extend.
 
+### Instant Start
+
+[Remix this project on GoMix](https://gomix.com/#!/project/botkit-slack)
+
+[Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-slack/master)
+
 ### Get Started
 
 Clone this repository:
