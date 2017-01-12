@@ -13,6 +13,10 @@ module.exports = function(controller) {
                 convo.gotoThread(matches[1]);
             }
         }
+        // Forwards request to talk to a human to Wordhop
+        if (controller.wordhop) {
+            controller.wordhop.assistanceRequested(convo.source_message);
+        }
 
         next();
 

@@ -13,6 +13,9 @@ module.exports = function(controller) {
 
     controller.hears(['color'], 'direct_message,direct_mention', function(bot, message) {
 
+        // If your bot is paused (Wordhop feature), stop it from replying
+        if (message.paused) { return }
+            
         bot.startConversation(message, function(err, convo) {
             convo.say('This is an example of using convo.ask with a single callback.');
 
@@ -28,6 +31,9 @@ module.exports = function(controller) {
 
 
     controller.hears(['question'], 'direct_message,direct_mention', function(bot, message) {
+
+        // If your bot is paused (Wordhop feature), stop it from replying
+        if (message.paused) { return }
 
         bot.createConversation(message, function(err, convo) {
 
