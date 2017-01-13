@@ -29,7 +29,7 @@ This bot demonstrates many of the core features of Botkit:
 
   Run your bot from the command line:
 
-    clientId=<MY SLACK TOKEN> clientSecret=<my client secret> port=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js
+    clientId=<MY SLACK TOKEN> clientSecret=<my client secret> PORT=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js
 
 # USE THE BOT:
 
@@ -52,7 +52,7 @@ This bot demonstrates many of the core features of Botkit:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
-  console.log('Error: Specify clientId clientSecret and port in environment');
+  console.log('Error: Specify clientId clientSecret and PORT in environment');
   usage_tip();
   process.exit(1);
 }
@@ -140,7 +140,7 @@ function usage_tip() {
     console.log('~~~~~~~~~~');
     console.log('Botkit Starter Kit');
     console.log('Execute your bot application like this:');
-    console.log('clientId=<MY SLACK CLIENT ID> clientSecret=<MY CLIENT SECRET> port=3000 studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js');
+    console.log('clientId=<MY SLACK CLIENT ID> clientSecret=<MY CLIENT SECRET> PORT=3000 studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js');
     console.log('Get Slack app credentials here: https://api.slack.com/apps')
     console.log('Get a Botkit Studio token here: https://studio.botkit.ai/')
     console.log('~~~~~~~~~~');
