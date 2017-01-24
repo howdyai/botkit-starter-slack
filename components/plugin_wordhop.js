@@ -21,7 +21,7 @@ module.exports = function(controller) {
                   return
               } else {
                   // spawn a bot
-                  bot = controller.spawn(team);
+                  var bot = controller.spawn(team);
   
                   // Identify the bot from either team storage or identifyBot()
                   bot.team_info = team;
