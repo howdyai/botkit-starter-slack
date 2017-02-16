@@ -2,7 +2,7 @@
 
 This repo contains everything you need to get started building a bot with Botkit and Botkit Studio!
 
-[Botkit Studio](https://studio.botkit.ai/) is a set tools that adds capabilities
+[Botkit Studio](https://studio.botkit.ai/) is a set of tools that adds capabilities
 to the open source Botkit library by offering hosted GUI interfaces for script
 management and action trigger definition. Botkit Studio is built by the company
 that created and maintains the open source Botkit library, [Howdy.](https://howdy.ai)
