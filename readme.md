@@ -11,7 +11,7 @@ While Botkit Studio is *not required* to build a bot using Botkit, we highly rec
 
 ### Instant Start
 
-[Remix this project on Gomix](https://gomix.com/#!/project/botkit-slack)
+[Remix this project on Glitch](https://glitch.com/edit/#!/botkit-slack)
 
 [Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-slack/master)
 
