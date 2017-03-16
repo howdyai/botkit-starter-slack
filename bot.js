@@ -64,7 +64,7 @@ var debug = require('debug')('botkit:main');
 var controller = Botkit.slackbot({
     clientId: process.env.clientId,
     clientSecret: process.env.clientSecret,
-    // debug: true,
+    debug: true,
     scopes: ['bot'],
     studio_token: process.env.studio_token,
     studio_command_uri: process.env.studio_command_uri,
