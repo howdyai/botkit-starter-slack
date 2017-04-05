@@ -11,7 +11,7 @@ While Botkit Studio is *not required* to build a bot using Botkit, we highly rec
 
 ### Instant Start
 
-[Remix this project on Glitch](https://glitch.com/edit/#!/botkit-slack)
+[Remix this project on Glitch](https://glitch.com/edit/#!/import/github/howdyai/botkit-starter-slack)
 
 [Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-slack/master)
 
@@ -32,15 +32,17 @@ Set up a new Slack application via the Slack developer portal. This is a multi-s
 
 Next, get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/)
 
-Now, run your bot from the command line with your new tokens:
+Update the `.env` file with your newly acquired tokens.
 
-`clientId=<MY SLACK TOKEN> clientSecret=<my client secret> PORT=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js`
+Launch your bot application by typing:
+
+`node .`
 
 Now, visit your new bot's login page: http://localhost:3000/login
 
 Once successfully logged in, your bot should connect to Slack AND Botkit Studio and leap into action!
 
-Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/readme-studio.md)
+Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/docs/dreadme-studio.md)
 
 ### Extend This Bot
 
@@ -68,4 +70,4 @@ record information about the teams and users that interact with the bot. While
 this is fine for development, or use by a single team, most developers will want
 to customize the code to use a real database system.
 
-There are [Botkit plugins for all the major database systems](https://github.com/howdyai/botkit/blob/master/readme-middlewares.md#storage-modules) which can be enabled with just a few lines of code.
+There are [Botkit plugins for all the major database systems](https://github.com/howdyai/botkit/blob/master/docs/readme-middlewares.md#storage-modules) which can be enabled with just a few lines of code.

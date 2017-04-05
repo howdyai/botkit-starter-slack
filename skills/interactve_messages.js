@@ -5,6 +5,7 @@ module.exports = function(controller) {
     // if the button action is 'say', act as if user said that thing
     controller.on('interactive_message_callback', function(bot, trigger) {
 
+
         if (trigger.actions[0].name.match(/^action$/)) {
             controller.trigger(trigger.actions[0].value, [bot, trigger]);
             return false; // do not bubble event
