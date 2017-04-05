@@ -42,7 +42,7 @@ Now, visit your new bot's login page: http://localhost:3000/login
 
 Once successfully logged in, your bot should connect to Slack AND Botkit Studio and leap into action!
 
-Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/docs/dreadme-studio.md)
+Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md)
 
 ### Extend This Bot
 
