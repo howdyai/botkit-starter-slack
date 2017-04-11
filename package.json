@@ -4,7 +4,9 @@
   "description": "A starter kit for building a custom Slack bot with Botkit Studio",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
