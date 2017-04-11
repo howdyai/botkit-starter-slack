@@ -4,6 +4,7 @@
   "description": "A starter kit for building a custom Slack bot with Botkit Studio",
   "main": "bot.js",
   "scripts": {
+    "preinstall": "node build-support/check-node-version.js && node build-support/force-yarn-package-management.js",
     "start": "node bot.js",
     "lint:js": "eslint .",
     "lint:js:fix": "eslint . --fix"
