@@ -1,7 +1,8 @@
 module.exports = {
   "extends": [
     "eslint:all",
-    "airbnb-base"
+    "airbnb-base",
+    "plugin:node/recommended"
   ],
   "env": {
     "es6": true,
@@ -14,6 +15,7 @@ module.exports = {
     "sourceType": "module"
   },
   "plugins" : [
+    "node"
   ],
   "settings": {
   },
