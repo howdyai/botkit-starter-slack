@@ -6,6 +6,7 @@
   "scripts": {
     "preinstall": "node build-support/check-node-version.js && node build-support/force-yarn-package-management.js",
     "start": "node bot.js",
+    "start:watch": "nodemon --debug bot.js",
     "lint:js": "eslint .",
     "lint:js:fix": "eslint . --fix"
   },
