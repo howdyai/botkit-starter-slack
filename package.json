@@ -11,6 +11,7 @@
     "start": "node bot.js",
     "start:watch": "nodemon --debug bot.js",
     "lint:js": "eslint .",
+    "lint:js:watch": "esw . -w --changed",
     "lint:js:fix": "eslint . --fix"
   },
   "dependencies": {
