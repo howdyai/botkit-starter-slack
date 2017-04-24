@@ -5,6 +5,12 @@
   "keywords": ["node", "bots", "slack","botkit"],
   "website": "https://studio.botkit.ai/",
   "success_url":"/",
+  "addons":[
+    {
+      "plan": "mongolab",
+      "as": "MONGO"
+    }
+  ],
   "env": {
       "clientId": {
           "description": "Client ID provided by Slack"
