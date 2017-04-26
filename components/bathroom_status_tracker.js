@@ -1,3 +1,5 @@
+var debug = require('debug')('bathroom-status-tracker');
+
 class BathroomStatusTracker {
   constructor(controller) {
     this.status = 'available';
@@ -8,14 +10,19 @@ class BathroomStatusTracker {
   updateStatus(status) {
     const oldStatus = this.status;
     this.status = status;
-    if (oldStatus != this.status) {
-      this.subscribed.forEach((bot, user) => {
-
+    if (oldStatus != this.status && this.status === 'available') {
+      debug('Bathroom now available. Notifying every subscriber');
+      this.subscribed.forEach(({bot, message}) => {
+        debug(`Notifying ${message.user.userId}`);
+        bot.reply(message, 'The bathroom is available!');
       });
     }
   }
 
-  subscribe(bot, user) {
-    this.subscribed[user] = bot;
+  subscribe(bot, message) {
+    debug(`userId ${message.user} has subscribed.`);
+    this.subscribed.set(message.user, { bot, message });
   }
 }
+
+module.exports = new BathroomStatusTracker();
