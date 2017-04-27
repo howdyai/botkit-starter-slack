@@ -17,6 +17,9 @@ class BathroomStatusTracker {
         bot.reply(message, 'The bathroom is available!');
       });
     }
+    if (oldStatus != this.status) {
+      return true;
+    }
   }
 
   subscribe(bot, message) {
