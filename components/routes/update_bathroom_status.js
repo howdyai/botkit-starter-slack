@@ -13,7 +13,7 @@ module.exports = function(webserver, controller) {
 
       res.status(200);
       res.setHeader('Content-Type', 'application/json');
-      res.send('Got ' + JSON.stringify(req.body, null, 4));
+      res.send(JSON.stringify({status: tracker.status}));
     });
     webserver.get('/bathroom_status', function(req, res) {
       res.status(200);
