@@ -29,20 +29,28 @@ module.exports = function(webserver, controller) {
   <head>
     <style type="text/css">
       body {
-        margin: 0 auto;
-        font-size: 40px;
+        margin: 0;
+        font-size: 80px;
         font-weight: bold;
+        display: table;
+        height: 100%;
+        width: 100%;
+        text-align: center;
       }
       .status-available {
+        display: table-cell;
         background-color: green;
+        vertical-align: middle;
       }
       .status-occupied {
+        display: table-cell;
         background-color: yellow;
+        vertical-align: middle;
       }
     </style>
   </head>
   <body>
-    <div class="status-${tracker.status}">${tracker.status}</div>
+    <div class="status-${tracker.status}">The bathroom is ${tracker.status}</div>
   </body>
 </html>
 `)
