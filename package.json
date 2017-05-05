@@ -13,9 +13,11 @@
     "dashbot": "0.7.4",
     "debug": "^2.3.3",
     "express": "^4.14.0",
+    "moment": "^2.18.1",
     "node-env-file": "^0.1.8",
     "querystring": "^0.2.0",
     "request": "^2.79.0",
+    "twit": "^2.2.5",
     "wordfilter": "^0.2.6"
   },
   "devDependencies": {},

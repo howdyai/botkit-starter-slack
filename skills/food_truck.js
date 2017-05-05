@@ -4,8 +4,6 @@ Food truck controllers for Replicated, Inc.
 
 */
 
-var wordfilter = require('wordfilter');
-
 module.exports = function(controller) {
 
     controller.hears(['food', 'hungry', 'lunch', 'truck'], 'direct_message,direct_mention,mention', function(bot, message) {

@@ -5,41 +5,35 @@ Contributed by: https://github.com/divolgin
 
 */
 
-var wordfilter = require('wordfilter');
-
 module.exports = function(controller) {
 
     controller.hears(['donut', 'doughnut'], 'direct_message,direct_mention,mention', function(bot, message) {
 
-        people = ['dex', 'dmitriy', 'ethan', 'graysonnull', 'jorgeolivero', 'shailie', 'winston'];
+        people = ['ethan', 'dmitriy', 'graysonnull', 'dex', 'shailie', 'winston'];
         tuesday = nearestTuesday();
-        name = people[tuesday.daysSinceEpoch % people.length];
+        name = people[tuesday.daysSinceWinston % people.length];
         if (tuesday.daysTilDonuts == 0) {
             bot.reply(message, '@' + name + ' is supposed to bring donuts today!');
         } else {
-            bot.reply(message, '@' + name + ' is bringing donuts in ' + tuesday.daysTilDonuts + ' days.');
+            bot.reply(message, '@' + name + ' is bringing donuts in ' + tuesday.daysTilDonuts + ' day(s).');
         }
     });
 };
 
 function nearestTuesday() {
-    today = new Date();
-    today.setHours(12, 0, 0) // use noon to aleviate timezone weirdness.
+    var moment = require('moment');
+    var now = moment();
 
-    curDay = today.getDay();
-    // 2 is this week's Tuesday
-    // 9 is next week's Tuesday
-    if (curDay <= 2) {
-      diffDays = 2 - curDay;
+    if(moment().weekday() < 2) {
+        nextDonutDay = moment().diff(now.weekday("Tuesday"), 'days')
     } else {
-      diffDays = 9 - curDay;
+        nextDonutDay = moment().add(1, 'week').day("Tuesday");
     }
 
-    var result = new Date(today);
-    result.setDate(result.getDate() + diffDays);
+    diffDays = moment(nextDonutDay).diff(now, 'days');
 
     return {
-        daysSinceEpoch: Math.round(result / 1000 / 60 / 60 / 24),
-        daysTilDonuts: diffDays
+        daysSinceWinston: moment([2016, 10, 17]).diff(now, 'days'),
+        daysTilDonuts: diffDays,
     };
 }
