@@ -24,10 +24,10 @@ function nearestTuesday() {
     var moment = require('moment');
     var now = moment();
 
-    if(moment().weekday() < 2) {
-        nextDonutDay = moment().diff(now.weekday("Tuesday"), 'days')
+    if(now.weekday() < 2) {
+        nextDonutDay = now.diff(now.weekday("Tuesday"), 'days')
     } else {
-        nextDonutDay = moment().add(1, 'week').day("Tuesday");
+        nextDonutDay = now.add(1, 'week').day("Tuesday");
     }
 
     diffDays = moment(nextDonutDay).diff(now, 'days');
