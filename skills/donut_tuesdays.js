@@ -27,7 +27,7 @@ function nearestTuesday() {
     if(now.weekday() < 2) {
         nextDonutDay = now.diff(now.weekday("Tuesday"), 'days')
     } else {
-        nextDonutDay = now.add(1, 'week').day("Tuesday");
+        nextDonutDay = now.clone().add(1, 'week').day("Tuesday");
     }
 
     diffDays = moment(nextDonutDay).diff(now, 'days');
