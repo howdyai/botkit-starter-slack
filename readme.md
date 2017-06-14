@@ -12,12 +12,29 @@ If you are looking to create a bot on other platforms using Glitch, check out th
 
 ### Getting Started
 
-There are a myriad of methods you can use to set up an application on Slack, but we feel this is the most flexible path you can use to setup your bot on the Slack Events API.
+There are a myriad of methods you can use to set up an application on Slack, here are some of your options:
 
 #### Use Botkit Studio
 [Botkit Studio](https://studio.botkit.ai/signup?code=slackglitch) is a set of tools that adds capabilities to the open source Botkit library by offering hosted GUI interfaces for script management and action trigger definition. 
 
 While Botkit Studio is *not required* to build a bot using Botkit, we highly recommend it as your bot will be easier to manage, customize and extend.
+
+#### Install Botkit
+
+[Remix this project on Glitch](https://glitch.com/edit/#!/import/github/howdyai/botkit-starter-slack)
+
+[Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-slack/master)
+
+Clone this repository using Git:
+
+`git clone https://github.com/howdyai/botkit-starter-slack.git`
+
+Install dependencies, including [Botkit](https://github.com/howdyai/botkit):
+
+```
+cd botkit-starter-slack
+npm install
+```
 
 #### Set up your Slack Application 
 Once you have setup your Botkit development enviroment, the next thing you will want to do is set up a new Slack application via the [Slack developer portal](https://api.slack.com/). This is a multi-step process, but only takes a few minutes. 
@@ -28,11 +45,13 @@ Once you have setup your Botkit development enviroment, the next thing you will 
 
 Next, get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/) if you have decided to use Studio. 
 
-Update the `.env` file in the Glitch project with your newly acquired tokens. If you have created this project from Studio, all your tokens have been entering in your `.env` already for you!
+Update the `.env` file with your newly acquired tokens.
 
-Once all your tokens have been entered, your `Show Live` button should become green. Click this button and you will see an option to add this bot to your team.
+Launch your bot application by typing:
 
-Once successfully logged in, your bot will connect to Slack AND Botkit Studio and leap into action! 
+`node .`
+
+Now, visit your new bot's login page: http://localhost:3000/login
 
 Now comes the fun part of [making your bot!](https://github.com/howdyai/botkit/blob/master/docs/readme.md#basic-usage)
 
