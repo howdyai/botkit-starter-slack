@@ -2,7 +2,6 @@
 
 You are setting up a complete copy of the Botkit code and a set of sample "skills" -- everything you need to get your bot online and working!
 This process takes a few seconds, as Glitch downloads all the code and sets it up for you.
-[![npm](https://img.shields.io/npm/v/botkit.svg)](https://www.npmjs.com/package/botkit)
 
 Check the upper left corner of your screen. When the ![spinning indicator](docs/glitch_installing.gif) becomes a ![show live indicator](docs/glitch_live.png), your deploy has completed.
 Click ![show live indicator](docs/glitch_live.png) to open your new app in a new window, and then navigate back to your Botkit Studio tab to complete setting up your bot!
