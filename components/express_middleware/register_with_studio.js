@@ -4,11 +4,8 @@ module.exports = function(webserver, controller) {
 
     var registered_this_session = false;
 
-    if (webserver && controller.config.studio_token) {
-        webserver.use(function(req, res, next) {
-            if (!registered_this_session) {
-                // get URL from the request
-                var host = req.get('host');
+    controller.registerDeployWithStudio = function(host) {
+            if (!registered_this_session && controller.config.studio_token) {
 
                 // information about this instance of Botkit
                 // send to Botkit Studio in order to display in the hosting tab
@@ -47,6 +44,12 @@ module.exports = function(webserver, controller) {
                 });
 
             }
+    }
+
+
+    if (webserver && controller.config.studio_token) {
+        webserver.use(function(req, res, next) {
+            controller.registerDeployWithStudio(req.get('host'));
             next();
         });
 
