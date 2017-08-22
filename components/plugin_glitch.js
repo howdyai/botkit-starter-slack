@@ -4,7 +4,7 @@ module.exports = function(controller) {
   if (process.env.PROJECT_DOMAIN) {
 
     // Register with studio using the provided domain name
-    controller.registerDeployWithStudio(process.env.PROJECT_DOMAIN + '.glitch.com');
+    controller.registerDeployWithStudio(process.env.PROJECT_DOMAIN + '.glitch.me');
 
   }
 }
