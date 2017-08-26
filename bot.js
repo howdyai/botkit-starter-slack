@@ -100,6 +100,9 @@ require(__dirname + '/components/onboarding.js')(controller);
 // Load in some helpers that make running Botkit on Glitch.com better
 require(__dirname + '/components/plugin_glitch.js')(controller);
 
+// Enable Wordhop.io plugin
+require(__dirname + '/components/plugin_wordhop.js')(controller);
+
 // Enable Dashbot.io plugin
 require(__dirname + '/components/plugin_dashbot.js')(controller);
 
@@ -120,12 +123,18 @@ require("fs").readdirSync(normalizedPath).forEach(function(file) {
 if (process.env.studio_token) {
     controller.on('direct_message,direct_mention,mention', function(bot, message) {
         controller.studio.runTrigger(bot, message.text, message.user, message.channel).then(function(convo) {
+            // If your bot is paused (Wordhop feature), stop it from replying
+            if (message.paused) { return }
             if (!convo) {
                 // no trigger was matched
                 // If you want your bot to respond to every message,
                 // define a 'fallback' script in Botkit Studio
                 // and uncomment the line below.
                 // controller.studio.run(bot, 'fallback', message.user, message.channel);
+                if (controller.wordhop) {
+                  // log an unknown intent with Wordhop
+                  controller.wordhop.logUnkownIntent(message);
+                }
             } else {
                 // set variables here that are needed for EVERY script
                 // use controller.studio.before('script') to set variables specific to a script

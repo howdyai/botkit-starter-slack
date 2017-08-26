@@ -44,6 +44,10 @@ module.exports = function(controller) {
     });
 
     controller.hears(['^say (.*)','^say'], 'direct_message,direct_mention', function(bot, message) {
+
+        // If your bot is paused (Wordhop feature), stop it from replying
+        if (message.paused) { return }
+        
         if (message.match[1]) {
 
             if (!wordfilter.blacklisted(message.match[1])) {
