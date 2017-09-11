@@ -11,7 +11,7 @@ module.exports = function(controller) {
                 if (err) {
                     debug('Error sending onboarding message:', err);
                 } else {
-                    controller.studio.run(bot, 'onboarding', bot.config.createdBy, direct_message.channel.id).catch(function(err) {
+                    controller.studio.run(bot, 'onboarding', bot.config.createdBy, direct_message.channel.id, direct_message).catch(function(err) {
                         debug('Error: encountered an error loading onboarding script from Botkit Studio:', err);
                     });
                 }
