@@ -119,7 +119,7 @@ require("fs").readdirSync(normalizedPath).forEach(function(file) {
 // controller.studio.before, controller.studio.after and controller.studio.validate
 if (process.env.studio_token) {
     controller.on('direct_message,direct_mention,mention', function(bot, message) {
-        controller.studio.runTrigger(bot, message.text, message.user, message.channel).then(function(convo) {
+        controller.studio.runTrigger(bot, message.text, message.user, message.channel, message).then(function(convo) {
             if (!convo) {
                 // no trigger was matched
                 // If you want your bot to respond to every message,
