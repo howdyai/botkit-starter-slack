@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "botkit": "^0.5",
+    "botkit": "^0.6",
     "botkit-storage-mongo": "^1.0.6",
     "dashbot": "0.7.4",
     "debug": "^2.3.3",
