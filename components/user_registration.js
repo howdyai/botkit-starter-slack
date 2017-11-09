@@ -42,6 +42,10 @@ module.exports = function(controller) {
 
                     // add in info that is expected by Botkit
                     testbot.identity = bot_auth;
+
+                    testbot.identity.id = bot_auth.user_id;
+                    testbot.identity.name = bot_auth.user;
+
                     testbot.team_info = team;
 
                     // Replace this with your own database!
