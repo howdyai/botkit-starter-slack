@@ -56,7 +56,6 @@ env(__dirname + '/.env');
 
 
 if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
-  console.log('WARNING: This application is not fully configured to work with Slack. Please see instructions at MYURL/');
   usage_tip();
   // process.exit(1);
 }
@@ -92,12 +91,18 @@ var webserver = require(__dirname + '/components/express_webserver.js')(controll
 
 if (!process.env.clientId || !process.env.clientSecret) {
 
+  // Load in some helpers that make running Botkit on Glitch.com better
+  require(__dirname + '/components/plugin_glitch.js')(controller);
+
   webserver.get('/', function(req, res){
     res.render('installation', {
+      env_link: 'https://glitch.com/edit/#!/' + process.env.PROJECT_DOMAIN + '?path=.env:1:0',
       layout: 'layouts/default'
     });
   })
 
+  var where_its_at = 'https://' + process.env.PROJECT_DOMAIN + '.glitch.me/';
+  console.log('WARNING: This application is not fully configured to work with Slack. Please see instructions at ' + where_its_at);
 }else {
 
   webserver.get('/', function(req, res){
