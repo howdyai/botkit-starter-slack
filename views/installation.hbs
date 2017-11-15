@@ -1,11 +1,186 @@
-<div>
-    <h1>Instructions go here.</h1>
-    <ol>
-      <li>Login at <a href="https://api.slack.com/" target="_blank">https://api.slack.com</a></li>
-      <li>Go to <a href="https://api.slack.com/apps" target="_blank">https://api.slack.com/apps</a></li>
-      <li>Click 'Create New App' and fill out the form, or find your app in the list below the button</li>
-      <li>In the 'App Credentials' section copy your 'Client ID' and 'Client Secret'</li>
-      <li>You will need to put these in your '.env' file.</li>
-      <li>If you are hosting on Glitch click <a href="{{env_link}}" target="_blank">here</a> to add them to your '.env' file.</li>
-    </ol>
+<div class="hero">
+  <h1>Botkit Starter Kit</h1>
 </div>
+
+<div class="box">
+  <p>
+    <strong>✅ Your Botkit app is correctly deployed and running!</strong>
+    Connect it to Slack to complete the setup.
+  </p>
+
+
+</div>
+
+<div class="box">
+  <h1>Create a Slack Application</h1>
+
+  <p>
+    To bring this bot online, create a new Slack application on the Slack developer site.
+    You will get a <strong>client id</strong> and <strong>client secret</strong>.
+    Make sure to copy and paste those values below for safe keeping.
+  </p>
+  <a href="http://api.slack.com/apps/new" class="button" target="_blank">Open Slack developer site</a>
+
+  <p>
+    <label>Client ID:</label>
+    <input id="clientId" class="copyurl" onchange="generateEnv()" placeholder="Paste your client id value here "/>
+  </p>
+
+  <p>
+    <label>Client Secret:</label>
+    <input id="clientSecret" class="copyurl"onchange="generateEnv()" placeholder="Paste your client secret value here "/>
+  </p>
+
+</div>
+
+<div class="box">
+
+  <h1>Configure Features</h1>
+
+  <p>
+    Botkit uses 4 features of Slack's API: Bot Users, Interactive Components, Event Subscriptions, and OAuth.
+    You will need to configure each.
+  </p>
+
+  <h3>1. Bot User</h3>
+
+  <p>
+    Click on the Slack application's "Bot Users" tab. Enter a Display name and a default username.
+    Also enable the option labeled "Always Show My Bot as Online."
+    Make sure to save your changes.
+  </p>
+
+  <p>
+    This option will create a username and identity for your bot so that it can join channels
+    and appear as a robotic team member.
+  </p>
+
+  <div class="hr"></div>
+
+  <h3>2. Interactive Components</h3>
+
+  <p>
+    Click on the Slack application's "Interactive Components" tab.
+    Enter this URL in the "Request URL" field, and then save your changes.
+   </p>
+
+   <p>
+     This option will allow your bot to send and receive interactive messages
+      with buttons, menus and dialog boxes.
+   </p>
+
+   <div class="input">
+    <label>Request URL</label>
+    <div class="addon">
+      <input readonly class="copyurl" id="webhook_url" type="text" value="{{protocol}}://{{domain}}/slack/receive" />
+      <button onclick="clipboard('webhook_url')">Copy</button>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <h3>3. Event Subscriptions</h3>
+
+  <p>
+    Click on the Slack application's "Event Subscriptions" tab.
+    Click to enable events, then specify this URL in the "Request URL" field.
+  </p>
+
+  <div class="input">
+   <label>Request URL</label>
+   <div class="addon">
+     <input readonly class="copyurl" id="webhook_url2" type="text" value="{{protocol}}://{{domain}}/slack/receive" />
+     <button onclick="clipboard('webhook_url2')">Copy</button>
+   </div>
+ </div>
+
+
+  <p>
+    After setting the URL, scroll down to the "Subscribe to Bot Events" section.
+    Here, you will select <strong>4 different messaging events</strong>:</p>
+
+  <ol>
+    <li>message.channels</li>
+    <li>message.groups</li>
+    <li>message.im</li>
+    <li>message.mpim</li>
+  </ol>
+
+  <p>
+    You may also want to enable other events, but these 4 are required for your bot send and receive basic messages.
+  </p>
+
+  <div class="hr"></div>
+
+  <h3>4. OAuth & Permissions</h3>
+
+  <p>
+    Click on the Slack application's "OAuth & Permissions" tab.
+    Scroll down to "Redirect URLs" and click "Add a new Redirect URL."
+    Enter this URL, and click "Save URLs"
+
+    <div class="input">
+      <label>OAuth Redirect URL</label>
+      <div class="addon">
+        <input readonly class="copyurl" type="text" id="oauth_url" value="{{protocol}}://{{domain}}/oauth" />
+        <button onclick="clipboard('oauth_url')">Copy</button>
+      </div>
+    </div>
+
+  <div class="hr"></div>
+
+  <h3>You are now finished with the Slack developer site! You can close that tab.</h3>
+
+
+</div>
+
+<div class="box">
+
+  <h3>Edit the <code>.env</code> File</h3>
+
+  <p>
+    The final step that will bring your bot online is to add the client id and client secret collected
+    in step 1 to this projects <code>.env</code> file.
+    <strong>Be careful not to change the other lines in this file!</strong>
+  </p>
+
+  <div class="input">
+    <label>Add this to your .env file</label>
+    <textarea rows="3" class="copyurl" id="env_file"></textarea>
+    <button onclick="clipboard('env_file')">Copy</button>
+  </div>
+
+  {{#glitch_domain}}
+    <a href="https://glitch.com/edit/#!/{{glitch_domain}}?path=.env:10" target="_blank" class="button">Edit your .env file</a>
+  {{/glitch_domain}}
+</div>
+
+<div class="box">
+  <h1>Ready to Connect!</h1>
+
+  <p>
+    Once you have values in your <code>.env</code> file, and Slack has been configured correctly, your bot is ready to connect.
+    Restart this application and reload this page - you'll see an "Add to Slack" button that will install your new bot!
+   </p>
+
+</div>
+
+</div>
+
+<script>
+  function clipboard(element) {
+    var copyText = document.getElementById(element);
+    copyText.select();
+    document.execCommand("Copy");
+  }
+
+  function generateEnv() {
+    var clientId = document.getElementById('clientId').value || '<Your client ID value here>';
+    var clientSecret = document.getElementById('clientSecret').value || '<Your client secret value here>';
+
+    var env = '# slack app credentials\nclientId=' + clientId + '\nclientSecret=' + clientSecret;
+    document.getElementById('env_file').value = env;
+  }
+
+  generateEnv();
+</script>

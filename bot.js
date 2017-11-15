@@ -96,7 +96,9 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
   webserver.get('/', function(req, res){
     res.render('installation', {
-      env_link: 'https://glitch.com/edit/#!/' + process.env.PROJECT_DOMAIN + '?path=.env:1:0',
+      domain: req.get('host'),
+      protocol: req.protocol,
+      glitch_domain:  process.env.PROJECT_DOMAIN,
       layout: 'layouts/default'
     });
   })
