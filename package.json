@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "botkit": "^0.6.3",
+    "botkit": "^0.6.7",
     "botkit-storage-mongo": "^1.0.6",
-    "botkit-studio-metrics": "^0.0.1",
+    "botkit-studio-metrics": "^0.0.2",
     "cookie-parser": "^1.4.3",
     "debug": "^2.3.3",
     "express": "^4.14.0",

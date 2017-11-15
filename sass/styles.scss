@@ -23,6 +23,10 @@ html {
   border: 2px solid #CCC;
   padding: 1rem calc(1rem - 2px);
   margin-bottom: 1rem;
+
+  h1, h2, h3  {
+    margin-top: 0;
+  }
 }
 
 footer {

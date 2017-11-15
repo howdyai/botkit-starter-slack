@@ -96,6 +96,7 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
   webserver.get('/', function(req, res){
     res.render('installation', {
+      studio_enabled: controller.config.studio_token ? true : false,
       domain: req.get('host'),
       protocol: req.protocol,
       glitch_domain:  process.env.PROJECT_DOMAIN,
@@ -109,6 +110,9 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
   webserver.get('/', function(req, res){
     res.render('index', {
+      domain: req.get('host'),
+      protocol: req.protocol,
+      glitch_domain:  process.env.PROJECT_DOMAIN,
       layout: 'layouts/default'
     });
   })

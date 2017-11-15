@@ -11,6 +11,30 @@
 
 </div>
 
+{{^studio_enabled}}
+<div class="box">
+  <h1>Enable Botkit Studio</h1>
+
+  <p>
+     It looks like you have not yet enabled Botkit Studio.
+     You should!
+  </p>
+  <p>
+    Botkit Studio provides an extra layer of tools and features on top of Botkit,
+    including content management, analytics, a message console, user database, and more.
+  </p>
+
+  <p>
+    To enable Botkit Studio, create an account,
+    and add your bot's <code>studio_token</code> value to the <code>.env</code> file along side
+    the other tokens.
+  </p>
+
+  <a href="https://studio.botkit.ai/" target="_blank" class="button">Launch Botkit Studio</a>
+
+</div>
+{{/studio_enabled}}
+
 <div class="box">
   <h1>Create a Slack Application</h1>
 

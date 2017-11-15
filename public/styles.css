@@ -17,6 +17,8 @@ html {
   border: 2px solid #CCC;
   padding: 1rem calc(1rem - 2px);
   margin-bottom: 1rem; }
+  .box h1, .box h2, .box h3 {
+    margin-top: 0; }
 
 footer {
   text-align: center; }
