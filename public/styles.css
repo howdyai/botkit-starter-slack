@@ -44,7 +44,7 @@ div.input label {
   border-radius: 6px;
   padding: 5px;
   background: #F0F0F0; }
-  .addon input {
+  .addon textarea, .addon input {
     flex-grow: 1;
     border: 0;
     background: transparent; }
@@ -54,6 +54,9 @@ div.input label {
     border: 1px solid #999;
     border-radius: 6px;
     font-weight: bold; }
+    .addon button.textarea {
+      align-self: flex-start;
+      padding: 0.5rem; }
     .addon button:hover {
       background: #FFF;
       color: #a795ef; }

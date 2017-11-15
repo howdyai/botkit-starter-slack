@@ -146,12 +146,14 @@
 
   <div class="input">
     <label>Add this to your .env file</label>
-    <textarea rows="3" class="copyurl" id="env_file"></textarea>
-    <button onclick="clipboard('env_file')">Copy</button>
+    <div class="addon">
+      <textarea rows="3" class="copyurl" id="env_file"></textarea>
+      <button class="textarea" onclick="clipboard('env_file')">Copy</button>
+    </div>
   </div>
 
   {{#glitch_domain}}
-    <a href="https://glitch.com/edit/#!/{{glitch_domain}}?path=.env:10" target="_blank" class="button">Edit your .env file</a>
+    <a href="https://glitch.com/edit/#!/{{.}}?path=.env:10" target="_blank" class="button">Edit your .env file</a>
   {{/glitch_domain}}
 </div>
 

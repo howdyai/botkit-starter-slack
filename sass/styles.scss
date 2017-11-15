@@ -62,7 +62,7 @@ div.input {
   border-radius: 6px;
   padding: 5px;
   background: #F0F0F0;
-  input {
+  textarea, input {
     flex-grow: 1;
     border: 0;
     background: transparent;
@@ -74,6 +74,12 @@ div.input {
     border: 1px solid #999;
     border-radius: 6px;
     font-weight: bold;
+
+    &.textarea {
+      align-self: flex-start;
+      padding: 0.5rem;
+    }
+
     &:hover {
       background: #FFF;
       color: $botkit_purple;
