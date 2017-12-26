@@ -29,7 +29,7 @@ This bot demonstrates many of the core features of Botkit:
 
   Run your bot from the command line:
 
-    clientId=<MY SLACK TOKEN> clientSecret=<my client secret> PORT=<3000> studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js
+    CLIENT_ID=<MY SLACK TOKEN> CLIENT_SECRET=<MY CLIENT SECRET> PORT=<3000> STUDIO_TOKEN=<MY BOTKIT STUDIO TOKEN> node bot.js
 
 # USE THE BOT:
 
@@ -51,24 +51,21 @@ This bot demonstrates many of the core features of Botkit:
     -> http://howdy.ai/botkit
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-var env = require('node-env-file');
-env(__dirname + '/.env');
-
-
-if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
+var env = require('dotenv').config().parsed;
+if (env.error || Object.values(env).some((x) => x === '')) {
   usage_tip();
-  // process.exit(1);
+  process.exit(1);
 }
 
 var Botkit = require('botkit');
 var debug = require('debug')('botkit:main');
 
 var bot_options = {
-    clientId: process.env.clientId,
-    clientSecret: process.env.clientSecret,
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     // debug: true,
     scopes: ['bot'],
-    studio_token: process.env.studio_token,
+    studio_token: process.env.STUDIO_TOKEN,
     studio_command_uri: process.env.studio_command_uri
 };
 
@@ -89,7 +86,7 @@ controller.startTicking();
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
 var webserver = require(__dirname + '/components/express_webserver.js')(controller);
 
-if (!process.env.clientId || !process.env.clientSecret) {
+if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET) {
 
   // Load in some helpers that make running Botkit on Glitch.com better
   require(__dirname + '/components/plugin_glitch.js')(controller);
@@ -140,7 +137,7 @@ if (!process.env.clientId || !process.env.clientSecret) {
   // If a trigger is matched, the conversation will automatically fire!
   // You can tie into the execution of the script using the functions
   // controller.studio.before, controller.studio.after and controller.studio.validate
-  if (process.env.studio_token) {
+  if (process.env.STUDIO_TOKEN) {
       controller.on('direct_message,direct_mention,mention', function(bot, message) {
           controller.studio.runTrigger(bot, message.text, message.user, message.channel, message).then(function(convo) {
               if (!convo) {
@@ -174,7 +171,7 @@ function usage_tip() {
     console.log('~~~~~~~~~~');
     console.log('Botkit Starter Kit');
     console.log('Execute your bot application like this:');
-    console.log('clientId=<MY SLACK CLIENT ID> clientSecret=<MY CLIENT SECRET> PORT=3000 studio_token=<MY BOTKIT STUDIO TOKEN> node bot.js');
+    console.log('CLIENT_ID=<MY SLACK CLIENT ID> CLIENT_SECRET=<MY CLIENT SECRET> PORT=3000 STUDIO_TOKEN=<MY BOTKIT STUDIO TOKEN> node bot.js');
     console.log('Get Slack app credentials here: https://api.slack.com/apps')
     console.log('Get a Botkit Studio token here: https://studio.botkit.ai/')
     console.log('~~~~~~~~~~');
