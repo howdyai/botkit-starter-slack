@@ -9,6 +9,15 @@ var hbs = require('express-hbs');
 module.exports = function(controller) {
 
     var webserver = express();
+    webserver.use(function(req, res, next) {
+        req.rawBody = '';
+
+        req.on('data', function(chunk) {
+            req.rawBody += chunk;
+        });
+
+        next();
+    });
     webserver.use(cookieParser());
     webserver.use(bodyParser.json());
     webserver.use(bodyParser.urlencoded({ extended: true }));
