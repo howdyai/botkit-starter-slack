@@ -11,8 +11,8 @@ Our goal with Botkit is to make bot building easy, fun, and accessible to anyone
 If you are looking to create a bot on other platforms using Glitch, check out the [Botkit project page](https://glitch.com/botkit).
 
 ### What's Included
-* [Botkit core](https://github.com/howdyai/botkit/blob/master/docs/readme.md#developing-with-botkit) - a complete programming system for building conversational software
-* [Botkit Studio API](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md#function-index) - additional APIs that extend Botkit with powerful tools and APIs
+* [Botkit core](https://botkit.ai/docs/core.html) - a complete programming system for building conversational software
+* [Botkit Studio API](https://botkit.ai/docs/readme-studio.md#function-index) - additional APIs that extend Botkit with powerful tools and APIs
 * [Pre-configured Express.js webserver](https://expressjs.com/) including:
    * A customizable "Install my Bot" homepage
    * Login and oauth endpoints that allow teams to install your bot
@@ -44,7 +44,7 @@ npm install
 #### Set up your Slack Application 
 Once you have setup your Botkit development enviroment, the next thing you will want to do is set up a new Slack application via the [Slack developer portal](https://api.slack.com/). This is a multi-step process, but only takes a few minutes. 
 
-* [Read this step-by-step guide](https://github.com/howdyai/botkit/blob/master/docs/slack-events-api.md) to make sure everything is set up. 
+* [Read this step-by-step guide](https://botkit.ai/docs/provisioning/slack-events-api.html) to make sure everything is set up. 
 
 * We also have this [handy video walkthrough](https://youtu.be/us2zdf0vRz0) for setting up this project with Glitch.
 
@@ -58,7 +58,7 @@ Launch your bot application by typing:
 
 Now, visit your new bot's login page: http://localhost:3000/login
 
-Now comes the fun part of [making your bot!](https://github.com/howdyai/botkit/blob/master/docs/readme.md#basic-usage)
+Now comes the fun part of [making your bot!](https://botkit.ai/docs/#build-your-bot)
 
 
 ### Extend This Starter kit
@@ -87,7 +87,7 @@ Continue your journey to becoming a champion botmaster by [reading the Botkit St
 
 By default, the starter kit uses a simple file-system based storage mechanism to record information about the teams and users that interact with the bot. While this is fine for development, or use by a single team, most developers will want to customize the code to use a real database system.
 
-There are [Botkit plugins for all the major database systems](https://github.com/howdyai/botkit/blob/master/docs/readme-middlewares.md#storage-modules) which can be enabled with just a few lines of code.
+There are [Botkit plugins for all the major database systems](https://botkit.ai/readme-middlewares.html#storage-modules) which can be enabled with just a few lines of code.
 
 We have enabled our [Mongo middleware]() for starters in this project. To use your own Mongo database, just fill out `MONGO_URI` in your `.env` file with the appropriate information. For tips on reading and writing to storage, [check out these medium posts](https://botkit.groovehq.com/knowledge_base/categories/build-a-bot)
 
