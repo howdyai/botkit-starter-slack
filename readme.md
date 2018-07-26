@@ -24,11 +24,6 @@ If you are looking to create a bot on other platforms using Glitch, check out th
 
 There are a myriad of methods you can use to set up an application on Slack, here are some of your options:
 
-#### Use Botkit Studio
-[Botkit Studio](https://studio.botkit.ai/signup?code=slackglitch) is a set of tools that adds capabilities to the open source Botkit library by offering hosted GUI interfaces for script management and action trigger definition. 
-
-While Botkit Studio is *not required* to build a bot using Botkit, we highly recommend it as your bot will be easier to manage, customize and extend.
-
 #### Install Botkit
 
 [Remix this project on Glitch](https://glitch.com/~botkit-slack)
