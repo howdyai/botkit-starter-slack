@@ -12,7 +12,6 @@ If you are looking to create a bot on other platforms using Glitch, check out th
 
 ### What's Included
 * [Botkit core](https://botkit.ai/docs/core.html) - a complete programming system for building conversational software
-* [Botkit Studio API](https://botkit.ai/docs/readme-studio.md#function-index) - additional APIs that extend Botkit with powerful tools and APIs
 * [Pre-configured Express.js webserver](https://expressjs.com/) including:
    * A customizable "Install my Bot" homepage
    * Login and oauth endpoints that allow teams to install your bot
