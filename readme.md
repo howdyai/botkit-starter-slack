@@ -47,8 +47,6 @@ Once you have setup your Botkit development enviroment, the next thing you will 
 
 * We also have this [handy video walkthrough](https://youtu.be/us2zdf0vRz0) for setting up this project with Glitch.
 
-Next, get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/) if you have decided to use Studio. 
-
 Update the `.env` file with your newly acquired tokens.
 
 Launch your bot application by typing:
