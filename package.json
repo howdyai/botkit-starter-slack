@@ -13,9 +13,9 @@
     "botkit-studio-metrics": "^0.0.2",
     "cookie-parser": "^1.4.3",
     "debug": "^2.3.3",
+    "dotenv": "^4.0.0",
     "express": "^4.14.0",
     "express-hbs": "^1.0.4",
-    "node-env-file": "^0.1.8",
     "querystring": "^0.2.0",
     "request": "^2.79.0",
     "wordfilter": "^0.2.6"
