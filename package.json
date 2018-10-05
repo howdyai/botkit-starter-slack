@@ -1,10 +1,18 @@
 {
   "name": "botkit-starter-slack",
+  "engines": {
+    "node": "v6.10.2"
+  },
   "version": "0.0.2",
   "description": "A starter kit for building a custom Slack bot with Botkit Studio",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "preinstall": "node build-support/check-node-version.js && node build-support/force-yarn-package-management.js",
+    "start": "node bot.js",
+    "start:watch": "nodemon --debug bot.js",
+    "lint:js": "eslint .",
+    "lint:js:watch": "esw . -w --changed",
+    "lint:js:fix": "eslint . --fix"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -20,7 +28,14 @@
     "request": "^2.79.0",
     "wordfilter": "^0.2.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-watch": "^3.0.1",
+    "nodemon": "^1.11.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/howdyai/botkit-starter-slack.git"
