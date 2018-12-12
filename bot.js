@@ -127,9 +127,6 @@ if (!process.env.clientId || !process.env.clientSecret) {
   // Load in some helpers that make running Botkit on Glitch.com better
   require(__dirname + '/components/plugin_glitch.js')(controller);
 
-  // enable advanced botkit studio metrics
-  require('botkit-studio-metrics')(controller);
-
   var normalizedPath = require("path").join(__dirname, "skills");
   require("fs").readdirSync(normalizedPath).forEach(function(file) {
     require("./skills/" + file)(controller);
