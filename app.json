@@ -3,7 +3,7 @@
   "description": "A starting point for building custom Slack applications",
   "repository": "https://github.com/howdyai/botkit-starter-slack",
   "keywords": ["node", "bots", "slack","botkit"],
-  "website": "https://studio.botkit.ai/",
+  "website": "https://botkit.ai/",
   "success_url":"/",
   "addons":[
     {
@@ -17,10 +17,6 @@
       },
       "clientSecret": {
           "description": "Client Secret provided by Slack"
-      },
-      "studio_token": {
-          "description": "Token associated with your bot in Botkit Studio",
-          "required":false
       }
   }
 }

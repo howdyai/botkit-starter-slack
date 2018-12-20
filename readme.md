@@ -1,6 +1,6 @@
 # Botkit Starter Kit for Slack Bots
 
-This repo contains everything you need to get started building a Slack bot with [Botkit](https://botkit.ai) and [Botkit Studio](https://botkit.ai).
+This repo contains everything you need to get started building a Slack bot with [Botkit](https://botkit.ai).
 
 Botkit is designed to ease the process of designing and running useful, creative bots that live inside messaging platforms. Bots are applications that can send and receive messages, and in many cases, appear alongside their human counterparts as users.
 
@@ -17,7 +17,6 @@ If you are looking to create a bot on other platforms using Glitch, check out th
    * Login and oauth endpoints that allow teams to install your bot
    * Webhook endpoints for communicating with platforms
 * Sample skill modules that demonstrate various features of Botkit
-* A customizable onboarding experience for new teams powered by Botkit Studio
 
 ### Getting Started
 
@@ -72,13 +71,10 @@ module.exports = function(controller) {
     // add event handlers to controller
     // such as hears handlers that match triggers defined in code
     // or controller.studio.before, validate, and after which tie into triggers
-    // defined in the Botkit Studio UI.
+    // defined in the Botkit CMS UI.
 
 }
 ```
-
-Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md)
-
 
 ### Customize Storage
 
@@ -90,7 +86,7 @@ We have enabled our [Mongo middleware]() for starters in this project. To use yo
 
 # Developer & Support Community
 
-You can find full documentation for Botkit on our [GitHub page](https://github.com/howdyai/botkit/blob/master/readme.md). Botkit Studio users can access the [Botkit Studio Knowledge Base](https://botkit.groovehq.com/help_center) for help in managing their account.
+You can find full documentation for Botkit on [our website](https://botkit.ai/docs).
 
 ###  Need more help?
 * Glitch allows users to ask the community for help directly from the editor! For more information on raising your hand, [read this blog post.](https://medium.com/glitch/just-raise-your-hand-how-glitch-helps-aa6564cb1685)
